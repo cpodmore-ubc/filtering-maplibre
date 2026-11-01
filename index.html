@@ -98,10 +98,6 @@
 		function showAllFields() { 
 			addFields(); 
 			map.setFilter('fields-fill', null);
-			map.setPaintProperty('fields-fill', 'fill-color', 
-				fieldsPaint['fill-color']); 
-			map.setPaintProperty('fields-fill', 'fill-opacity', 
-				fieldsPaint['fill-opacity']); 
 		}
 		
 		function highlightFields() { 
@@ -111,10 +107,8 @@
 			if (fieldTypeToHighlight === '') { 
 				showAllFields(); 
 				return; 
-			map.setPaintProperty('fields-fill', 'fill-color', '#7FFF00'); 
-			map.setPaintProperty('fields-fill', 'fill-color', 0.8); 
 		}
-		map.setFilter('fields-fill', ['in', ['get', fieldTypeToHighlight, ['get', 'SURFACE_TYPE']]); 
+		map.setFilter('fields-fill', ['==', ['get', 'SURFACE_TYPE'], fieldTypeToHighlight]);
 	}
 
       map.on('load', function () {
