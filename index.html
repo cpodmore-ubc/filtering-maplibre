@@ -113,15 +113,14 @@
 		map.setFilter('fields-fill', ['==', ['get', 'SURFACE_TYPE'], fieldTypeToHighlight]); 
 	}
 
+	document.getElementById('showAllFieldsButton')
+		.addEventListener('click', showAllFields);
+
+	document.getElementById('highlightFieldsButton')
+		.addEventListener('click', highlightFields);
+
       // Listen to the buttons only after the maps style has loaded
       map.on('load', function () {
-		const button = document.getElementById('showAllFieldsButton'); 
-		button.addEventListener('click', showAllFields); 
-		const highlightButton = document.getElementById('highlightFieldsButton'); 
-		highlightButton.addEventListener('click', highlightFields); 
-        // A source holds the data. data: is the raw URL, so MapLibre fetches the file itself.
-        // The fields appear when the whole file has arrived. Meanwhile, the browser goes on to map.addLayer() straight away.
-        // attribution is the credit in the map's corner.
 		showAllFields(); 
       });
     </script>
