@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <title>MapLibre-ing UBC Submission</title>
+    <title>Filtering MapLibre - UBC Submission</title>
 
     <!-- Load MapLibre's stylesheet (CSS). Its code (JavaScript) is loaded below, in the script. -->
     <link
@@ -110,13 +110,13 @@
 				showAllFields(); 
 				return; 
 			}
-		map.setFilter('fields-fill', ['in', fieldTypeToHighlight, ['get', 'SURFACE_TYPE']]); 
+		map.setFilter('fields-fill', ['==', ['get', 'SURFACE_TYPE'], fieldTypeToHighlight]); 
 	}
 
       // Add the source and the layer only after the map's style has loaded.
       map.on('load', function () {
 		const button = document.getElementById('showAllFieldsButton'); 
-		button.addEventListener('click', addFields); 
+		button.addEventListener('click', showAllFields); 
 		const highlightButton = document.getElementById('highlightFieldsButton'); 
 		highlightButton.addEventListener('click', highlightFields); 
         // A source holds the data. data: is the raw URL, so MapLibre fetches the file itself.
