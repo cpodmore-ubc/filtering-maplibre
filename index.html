@@ -105,7 +105,7 @@
 			
 			const textEntry = document.getElementById('highlightFieldTypeText'); 
 			
-			const fieldTypeToHighlight = textEntry.value; // lower case? 
+			const fieldTypeToHighlight = textEntry.value.trim().toLowerCase(); // lower case? 
 			if (fieldTypeToHighlight === '') { 
 				showAllFields(); 
 				return; 
@@ -113,7 +113,7 @@
 		map.setFilter('fields-fill', ['==', ['get', 'SURFACE_TYPE'], fieldTypeToHighlight]); 
 	}
 
-      // Add the source and the layer only after the map's style has loaded.
+      // Listen to the buttons only after the maps style has loaded
       map.on('load', function () {
 		const button = document.getElementById('showAllFieldsButton'); 
 		button.addEventListener('click', showAllFields); 
