@@ -77,19 +77,17 @@
 			return; // don't add fields twice
 	} 		
 			
+	map.addLayer({
+        id: 'fields-fill',
+        type: 'fill',
+        source: 'fields',
+        paint: fieldsPaint
+		});		
+			
 	map.addSource('fields', {
          type: 'geojson',
          data: url,
          attribution: 'Fields: UBC Campus Fields, UBCGeodata'
-        });
-
-        // A layer says how to draw a source: here, a fill for each field.
-        // source: 'fields' is the name that addSource gave the source above.
-        map.addLayer({
-          id: 'fields-fill',
-          type: 'fill',
-          source: 'fields',
-          paint: fieldsPaint
         });
 
         map.on('click', 'fields-fill', fieldsPopup);
